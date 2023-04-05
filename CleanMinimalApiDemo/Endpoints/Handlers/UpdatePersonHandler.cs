@@ -7,11 +7,11 @@ namespace CleanMinimalApiDemo.API.Endpoints.Handlers;
 
 public class UpdatePersonHandler : IRequestHandler<UpdatePersonRequest, IResult>
 {
-    private readonly IUnitOfWork unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public UpdatePersonHandler(IUnitOfWork unitOfWork)
+    public UpdatePersonHandler(IUnitOfWork unitOfWork)s
     {
-        this.unitOfWork = unitOfWork;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<IResult> Handle(UpdatePersonRequest request, CancellationToken cancellationToken)
