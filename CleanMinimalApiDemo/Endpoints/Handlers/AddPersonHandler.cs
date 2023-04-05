@@ -6,16 +6,16 @@ using CleanMinimalAPIDemo.Domain.Models;
 
 namespace CleanMinimalApiDemo.API.Endpoints.Handlers;
 
-public class UpdatePersonHandler : IRequestHandler<UpdatePersonRequest, IResult>
+public class AddPersonHandler : IRequestHandler<AddPersonRequest, IResult>
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public UpdatePersonHandler(IUnitOfWork unitOfWork)
+    public AddPersonHandler(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<IResult> Handle(UpdatePersonRequest request, CancellationToken cancellationToken)
+    public async Task<IResult> Handle(AddPersonRequest request, CancellationToken cancellationToken)
     {
         var personToSave = new Person
         {

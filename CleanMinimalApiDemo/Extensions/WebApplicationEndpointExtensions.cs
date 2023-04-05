@@ -13,6 +13,7 @@ public static class WebApplicationEndpointExtensions
 
         app.MediatePut<UpdatePersonRequest>("/person/{id}");
         app.MediateGet<GetAllPeopleRequest>("/person/all");
+        app.MediatePost<AddPersonRequest>("/person");
 
         return app;
     }
