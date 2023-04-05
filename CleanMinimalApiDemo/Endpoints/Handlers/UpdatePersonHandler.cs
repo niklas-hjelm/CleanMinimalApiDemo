@@ -9,7 +9,7 @@ public class UpdatePersonHandler : IRequestHandler<UpdatePersonRequest, IResult>
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public UpdatePersonHandler(IUnitOfWork unitOfWork)s
+    public UpdatePersonHandler(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
