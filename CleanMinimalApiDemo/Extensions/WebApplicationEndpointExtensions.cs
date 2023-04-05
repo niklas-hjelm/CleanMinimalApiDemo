@@ -12,6 +12,7 @@ public static class WebApplicationEndpointExtensions
         app.MapGroup("/pet").MapPetGroup();
 
         app.MediatePut<UpdatePersonRequest>("/person/{id}");
+        app.MediateGet<GetAllPeopleRequest>("/person/all");
 
         return app;
     }
@@ -34,6 +35,30 @@ public static class WebApplicationEndpointExtensions
         where TRequest : IHttpRequest
     {
         app.MapGet(pattern,
+            async (IMediator mediator, [AsParameters] TRequest request) =>
+                await mediator.Send(request)
+        );
+        return app;
+    }
+
+    public static WebApplication MediatePost<TRequest>(
+        this WebApplication app,
+        string pattern)
+        where TRequest : IHttpRequest
+    {
+        app.MapPost(pattern,
+            async (IMediator mediator, [AsParameters] TRequest request) =>
+                await mediator.Send(request)
+        );
+        return app;
+    }
+
+    public static WebApplication MediateDelete<TRequest>(
+        this WebApplication app,
+        string pattern)
+        where TRequest : IHttpRequest
+    {
+        app.MapDelete(pattern,
             async (IMediator mediator, [AsParameters] TRequest request) =>
                 await mediator.Send(request)
         );

@@ -16,7 +16,7 @@ public class UpdatePersonHandler : IRequestHandler<UpdatePersonRequest, IResult>
 
     public async Task<IResult> Handle(UpdatePersonRequest request, CancellationToken cancellationToken)
     {
-        var personToUpdate = await unitOfWork.PeopleRepository.GetAsync(request.Id);
+        var personToUpdate = await _unitOfWork.PeopleRepository.GetAsync(request.Id);
         if (personToUpdate is null)
         {
             return Results.NotFound($"No person with id {request.Id} found");
@@ -27,7 +27,7 @@ public class UpdatePersonHandler : IRequestHandler<UpdatePersonRequest, IResult>
         personToUpdate.Phone = request.Person.Phone;
         personToUpdate.Address = request.Person.Address;
         personToUpdate.City = request.Person.City;
-        await unitOfWork.SaveAsync();
+        await _unitOfWork.SaveAsync();
         return Results.Ok(personToUpdate);
     }
 }
