@@ -5,11 +5,11 @@ using MediatR;
 
 namespace CleanMinimalApiDemo.API.Endpoints.Handlers;
 
-public class UpdatePersonHandler : IRequestHandler<UpdatePersonRequest, IResult>
+public class AddPersonHandler : IRequestHandler<AddPersonRequest, IResult>
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public UpdatePersonHandler(IUnitOfWork unitOfWork)
+    public AddPersonHandler(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }

@@ -21,9 +21,4 @@
     <ProjectReference Include="..\CleanMinimalAPIDemo.Domain\CleanMinimalAPIDemo.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Endpoints\Handlers\" />
-    <Folder Include="Endpoints\Requests\" />
-  </ItemGroup>
-
 </Project>
