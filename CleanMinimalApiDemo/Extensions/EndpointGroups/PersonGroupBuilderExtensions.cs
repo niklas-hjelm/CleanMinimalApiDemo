@@ -9,7 +9,7 @@ public static class PersonGroupBuilderExtensions
 {
     public static RouteGroupBuilder MapPersonGroup(this RouteGroupBuilder builder)
     {
-        builder.MapGet("/all", GetAllPeopleHandler).WithOpenApi();
+        builder.MedateGet<GetAllPeopleRequest>("/all");
         builder.MapGet("/{id}", GetPersonHandler).WithOpenApi();
         builder.MapPost("/", SavePersonHandler).WithOpenApi();  
         builder.MapPut("/{id}", UpdatePersonHandler).WithOpenApi();
@@ -61,21 +61,6 @@ public static class PersonGroupBuilderExtensions
             Address = person.Address,
             City = person.City
         };
-        return Results.Ok(result);
-    }
-
-    private static async Task<IResult> GetAllPeopleHandler(IUnitOfWork unitOfWork)
-    {
-        var allPeople = await unitOfWork.PeopleRepository.GetAllAsync();
-        var result = allPeople.Select(p => new PersonDto
-        {
-            FirstName = p.FirstName,
-            LastName = p.LastName,
-            Email = p.Email,
-            Phone = p.Phone,
-            Address = p.Address,
-            City = p.City
-        });
         return Results.Ok(result);
     }
 }
