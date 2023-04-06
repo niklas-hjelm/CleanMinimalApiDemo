@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -18,6 +19,10 @@
   <ItemGroup>
     <ProjectReference Include="..\CleanMinimalApiDemo.Business\CleanMinimalApiDemo.Service.csproj" />
     <ProjectReference Include="..\CleanMinimalAPIDemo.Domain\CleanMinimalAPIDemo.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Endpoints\Requests\" />
   </ItemGroup>
 
 </Project>

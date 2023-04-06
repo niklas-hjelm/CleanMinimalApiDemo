@@ -1,4 +1,5 @@
-﻿using CleanMinimalAPIDemo.Domain.Dtos;
+﻿using CleanMinimalApiDemo.API.Endpoints.Requests;
+using CleanMinimalAPIDemo.Domain.Dtos;
 using CleanMinimalAPIDemo.Domain.Models;
 using CleanMinimalAPIDemo.Domain.Services.Interfaces;
 
@@ -15,19 +16,19 @@ public static class PersonGroupBuilderExtensions
         return builder;
     }
 
-    private static async Task<IResult> UpdatePersonHandler(IUnitOfWork unitOfWork, PersonDto person, int id)
+    private static async Task<IResult> UpdatePersonHandler(IUnitOfWork unitOfWork, [AsParameters] UpdatePersonRequest request)
     {
-        var personToUpdate = await unitOfWork.PeopleRepository.GetAsync(id);
+        var personToUpdate = await unitOfWork.PeopleRepository.GetAsync(request.Id);
         if (personToUpdate is null)
         {
-            return Results.NotFound($"No person with id {id} found");
+            return Results.NotFound($"No person with id {request.Id} found");
         }
-        personToUpdate.FirstName = person.FirstName;
-        personToUpdate.LastName = person.LastName;
-        personToUpdate.Email = person.Email;
-        personToUpdate.Phone = person.Phone;
-        personToUpdate.Address = person.Address;
-        personToUpdate.City = person.City;
+        personToUpdate.FirstName = request.Person.FirstName;
+        personToUpdate.LastName = request.Person.LastName;
+        personToUpdate.Email = request.Person.Email;
+        personToUpdate.Phone = request.Person.Phone;
+        personToUpdate.Address = request.Person.Address;
+        personToUpdate.City = request.Person.City;
         await unitOfWork.SaveAsync();
         return Results.Ok(personToUpdate);
     }
