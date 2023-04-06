@@ -24,7 +24,6 @@ public static class PersonGroupBuilderExtensions
         }
         personToUpdate.FirstName = person.FirstName;
         personToUpdate.LastName = person.LastName;
-        personToUpdate.Pets = person.PetIds.Select(petId => new Pet { Id = petId}).ToList();
         personToUpdate.Email = person.Email;
         personToUpdate.Phone = person.Phone;
         personToUpdate.Address = person.Address;
@@ -39,7 +38,6 @@ public static class PersonGroupBuilderExtensions
         {
             FirstName = person.FirstName,
             LastName = person.LastName,
-            Pets = person.PetIds.Select(petId => new Pet { Id = petId}).ToList(),
             Email = person.Email,
             Phone = person.Phone,
             Address = person.Address,
@@ -57,7 +55,6 @@ public static class PersonGroupBuilderExtensions
         {
             FirstName = person.FirstName,
             LastName = person.LastName,
-            PetIds = person.Pets.Select(pet => pet.Id).ToList(),
             Email = person.Email,
             Phone = person.Phone,
             Address = person.Address,
@@ -73,7 +70,6 @@ public static class PersonGroupBuilderExtensions
         {
             FirstName = p.FirstName,
             LastName = p.LastName,
-            PetIds = p.Pets.Select(pet => pet.Id).ToList(),
             Email = p.Email,
             Phone = p.Phone,
             Address = p.Address,
